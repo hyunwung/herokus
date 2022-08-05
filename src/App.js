@@ -1,11 +1,19 @@
-import './App.css';
+import React from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom"
+import MainPage from "./components/MainPage/MainPage";
+import Pages from "./components/Pages/Pages"
+
+
+
 
 const App = ()=>{
   return (
-    <div className="App">
-      <Btn>안녕</Btn>
-      <Btn>뒤로가기</Btn>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path = "/" element = {<MainPage/>}/>
+        <Route path = "Pages" element = {<Pages/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
