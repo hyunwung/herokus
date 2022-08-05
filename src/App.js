@@ -1,19 +1,16 @@
 import React from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom"
+import { Route, Routes} from "react-router-dom";
 import MainPage from "./components/MainPage/MainPage";
-import Pages from "./components/Pages/Pages"
-
-
-
+import Pages from "./components/Pages/Pages";
+import BoardWrite from "./components/BoardWrite/BoardWrite";
 
 const App = ()=>{
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path = "/" element = {<MainPage/>}/>
-        <Route path = "Pages" element = {<Pages/>}/>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path = {"/"} element = {<MainPage/>}/>
+      <Route path = {"/Pages"} element = {<Pages/>}/>
+      <Route path = {"BoardWrite"} element = {<BoardWrite/>}/>
+    </Routes>
   );
 }
 

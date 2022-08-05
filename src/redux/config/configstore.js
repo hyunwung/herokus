@@ -1,11 +1,9 @@
-import { createStore } from "redux";
+import {configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import notice from "../modules/notice"
 
-const rootReducer = combineReducers({
-    notice,
-
-});
-const store = createStore(rootReducer);
-
-export default store;
+export default configureStore({
+    reducer:{
+        notice:notice,
+    }
+})

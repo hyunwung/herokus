@@ -3,24 +3,19 @@ import "./MainPage.css";
 import styled from "styled-components";
 import Header from "../Header/Header";
 // import { useState } from "react"
+import {Link} from "react-router-dom";
 
 function MainPage() {
   return (
     <div className="MainPage">
       <Header/>
       <StNoticeBoard>
-        임시 박스
         
       </StNoticeBoard>
-        
-
-
-
-
-
-      
       <div>
-        <StButton>게시글 작성</StButton>
+        <Link to={"/BoardWrite"}>
+          <StButton>게시글 작성</StButton>
+        </Link>
       </div>
     </div>
   );

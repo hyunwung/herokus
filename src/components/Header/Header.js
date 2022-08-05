@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 function Header() {
   return (
     <HeaderContainel>
-      <HomeBtn>홈버튼</HomeBtn>
+      <Link to={"/"}>
+        <HomeBtn>홈버튼</HomeBtn>
+      </Link>
       <UserNameBox>유저 닉네임</UserNameBox>
     </HeaderContainel>
   )

@@ -1,27 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from 'nanoid'
 
-
-const initialState = {
- List : [{
-
-    id : 1,    
+let number = 1;
+const initialState = [{
+    id : nanoid(),    
     title : "뒤질거 같아요",
-    body  : "차라리 죽여줘",
-}    
-]
-    
-}
-
+    content  : "차라리 죽여줘",
+}]
 export const noticeSlice = createSlice({
     name: "notice",
-    initialState,
+    initialState:initialState,
     reducers: {
       addnotice: (state, action) => {
-        state.number = state.number + action.payload;
+        const newNotice = {
+          id: nanoid(),
+          title : action.payload.title,
+          content : action.payload.content,
+        }
+        console.log(newNotice)
+      state.push(newNotice)
       },
   
       deletenotice: (state, action) => {
-        state.number = state.number - action.payload;
+        return state.filter((states)=>states.id !== action.payload.id)
       },
     },
   });

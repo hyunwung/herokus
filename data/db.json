@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "user": "test1",
+      "name": "박용원",
+      "email": "sddsk1123@naver.com",
+      "password": "1234"
+    },
+    {
+      "id": 2,
+      "user": "test2",
+      "name": "킴",
+      "email": "sddsk1123@naver.com",
+      "password": "1234"
+    },
+    {
+      "id":3,
+      "user": "test3",
+      "name": "서현웅",
+      "email": "sddsk1123@naver.com",
+      "password": "1234"
+    }
+  ]
+}
