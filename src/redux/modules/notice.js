@@ -7,6 +7,7 @@ const initialState = [{
     title : "뒤질거 같아요",
     content  : "차라리 죽여줘",
 }]
+
 export const noticeSlice = createSlice({
     name: "notice",
     initialState:initialState,

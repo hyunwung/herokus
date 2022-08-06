@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useDispatch } from "react-redux";
-import {addnotice, deletenotice} from '../../redux/modules/notice';
+import { useDispatch, useSelector } from "react-redux";
+import {addnotice} from '../../redux/modules/notice';
+import { getLoginAsync } from "../../redux/modules/login";
 import Header from '../Header/Header'
 
 function BoardWrite() {
   const dispatch = useDispatch();
-
+  
   const [title,setTitle] = useState("");
   const [content,setCotent] = useState("");
   const titleControl = (e) =>{
@@ -31,7 +32,6 @@ function BoardWrite() {
     setTitle("")
     setCotent("")
   }
-  
   return (
     <>
       <Header/>

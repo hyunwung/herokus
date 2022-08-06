@@ -1,5 +1,5 @@
 
-.Login{    
+.signup{    
     height: 100vh;
     width: 100vw;
     font-family: 'Poppins', sans-serif;
@@ -9,16 +9,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}   
-
-.row-group{
-    /* max-width:460px; */
-    /* position:relative; */
-    
 }
+.sign-container{
+    height: 510px;
+}
+
 .input-item:focus{
     background-color:rgb(37, 204, 247);
     border: 1.5px solid rgb(127, 143, 166);
     outline-color: rgb(127, 143, 166);
     outline-width: 1.5px;
+}
+
+.margin-temp{
+    margin-bottom: 10px;
+}
+span{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+    margin-left: 47px;
+}
+input:invalid ~ span{
+    display: none;
 }
