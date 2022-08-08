@@ -1,18 +1,19 @@
 import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
-let urls = "http://localhost:5000/users"
+let url1 = "http://localhost:5000/boards"
+let url2 = "http://localhost:5000/comment"
 
 export const getLoginAsync = createAsyncThunk( // 아이디 조회 , 찾기
     "login/getTodosAsync",
     async ()=>{
-        const response = await axios.get(urls)
+        const response = await axios.get(url1)
         return response.data
 })
 export const postLoginAsync = createAsyncThunk( // 회원가입 
     "login/postTodosAsync",
     async (payload)=>{
-        const response = await axios.post(urls,{
+        const response = await axios.post(url1,{
             user: payload.user,
             name: payload.name,
             email: payload.email,
@@ -23,7 +24,7 @@ export const postLoginAsync = createAsyncThunk( // 회원가입
 export const LoginAsync = createAsyncThunk( // 접속하기 
     "login/todosAsync",
     async (payload)=>{
-        const response = await axios.post(urls,{
+        const response = await axios.post(url1,{
             user: payload.user,
             name: payload.name,
             email: payload.email,
@@ -34,13 +35,13 @@ export const LoginAsync = createAsyncThunk( // 접속하기
 // export const getLoginAsync = createAsyncThunk(
 //     "login/getTodosAsync",
 //     async ()=>{
-//         const response = await axios.get(urls)
+//         const response = await axios.get()
 //         return response.data
 // })
 // export const getLoginAsync = createAsyncThunk(
 //     "login/getTodosAsync",
 //     async ()=>{
-//         const response = await axios.get(urls)
+//         const response = await axios.get()
 //         return response.data
 // })
 
@@ -64,7 +65,6 @@ export const loginSlice = createSlice({
         [postLoginAsync.fulfilled]:(state,action) => {
             console.log(action.payload)
             return action.payload
-             
         },
     }
   })

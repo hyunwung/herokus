@@ -9,9 +9,9 @@ function Login() {
   const dispatch = useDispatch();
   const loginget = useSelector((state)=>state.login)
 
-  // useEffect(()=>{
-  //   dispatch(getLoginAsync());
-  // },[])
+  useEffect(()=>{
+    dispatch(getLoginAsync());
+  },[])
   return (
     <div className='Login'>
       <LoginContainer>

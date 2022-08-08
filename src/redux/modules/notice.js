@@ -1,20 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { nanoid } from 'nanoid'
+import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
+import axios from 'axios';
 
-let number = 1;
+let url1 = "http://localhost:5000/boards"
+
+export const getBoardsAsync = createAsyncThunk( // 아이디 조회 , 찾기
+    "login/getTodosAsync",
+    async ()=>{
+        const response = await axios.get(url1)
+        return response.data
+})
+
 const initialState = [{
-    id : nanoid(),    
-    title : "뒤질거 같아요",
+    id : 1,    
+    title : "stay.",
     content  : "차라리 죽여줘",
 }]
 
 export const noticeSlice = createSlice({
     name: "notice",
-    initialState:initialState,
+    initialState,
     reducers: {
       addnotice: (state, action) => {
         const newNotice = {
-          id: nanoid(),
+          id: 1,
           title : action.payload.title,
           content : action.payload.content,
         }
@@ -26,6 +34,12 @@ export const noticeSlice = createSlice({
         return state.filter((states)=>states.id !== action.payload.id)
       },
     },
+    extraReducers:{
+      [getBoardsAsync.fulfilled]:(state,{payload}) => {
+        console.log("fetching data !")
+        return [...payload]
+      },
+    }
   });
   
   export const { addnotice, deletenotice } = noticeSlice.actions;

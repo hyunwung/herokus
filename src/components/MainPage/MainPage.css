@@ -1,0 +1,20 @@
+.container {
+    margin-top: 20px;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+a{
+    text-decoration: none
+}
+.boards{
+    padding: 1px 6px;
+    width: 980px;
+    height: 25px;
+    
+    border-bottom: 0.5px solid gray;
+    font-weight: bold;
+    font-size: 16px;
+    color :rgb(72, 52, 212);
+}

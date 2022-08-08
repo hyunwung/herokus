@@ -1,23 +1,52 @@
 {
-  "users": [
+  "boards": [
     {
       "id": 1,
-      "user": "test1",
-      "name": "서현웅",
-      "email": "sddsk1123@naver.com",
-      "password": "1234!"
+      "title": "감자는 사실 맛 있어.",
+      "content": "맞음 싹튼거 먹으면 안죽음"
     },
     {
-      "user": "test2",
-      "name": "서현웅",
-      "email": "dd",
-      "password": "1234!",
-      "id": 2
+      "id": 2,
+      "title": "테스트",
+      "content": "서현웅"
     },
     {
-      "user": "test1",
-      "password": "dkalclsgozld12!",
+      "title": "알려주는 예시용",
+      "content": "참고",
       "id": 3
+    },
+    {
+      "id": 4,
+      "title": "예시2",
+      "content": "참고하시라우"
+    }
+  ],
+  "comment": [
+    {
+      "id": 2,
+      "comments": [
+        {
+          "id": 1,
+          "comment": "가가"
+        },
+        {
+          "id": 2,
+          "comment": "나나"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "comments": [
+        {
+          "id": 1,
+          "comment": "가가"
+        },
+        {
+          "id": 2,
+          "comment": "디디"
+        }
+      ]
     }
   ]
 }
