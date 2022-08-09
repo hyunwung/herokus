@@ -1,14 +1,20 @@
 import React from 'react'
 import Header from '../Header/Header'
 import styled from 'styled-components'
+import Comment from '../Comment/Comment'
+import { useParams } from 'react-router-dom'
 
 function Pages() {
+    const { idValue } = useParams()
+    console.log(idValue)
   return (
     <>  
         <Header/>
         <ContentBox>여기엔 내용이 들어갑니당~</ContentBox>
         <CommentContainer>
-        <CommentBox>여기엔 댓글이 들어갑니당~</CommentBox>
+        <CommentBox>
+            <Comment id = {1}></Comment>
+        </CommentBox>
         <CommentInput type= "text"/>
         <CommentBtn>댓글 추가</CommentBtn>
         </CommentContainer>

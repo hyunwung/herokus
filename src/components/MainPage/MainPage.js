@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import "./MainPage.css";
 import styled from "styled-components";
 import Header from "../Header/Header";
-// import { useState } from "react"
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBoardsAsync } from "../../redux/modules/notice";
 
-function MainPage() {
+const MainPage = ()=>{
   const dispatch = useDispatch();
   const boardGet = useSelector((state)=>state.notice)
-  console.log(boardGet)
+  
   useEffect(()=>{
     dispatch(getBoardsAsync());
   },[])
@@ -19,14 +18,14 @@ function MainPage() {
       <Header/>
       <div className="container">
         <StNoticeBoard>
-        {boardGet.map((boards ,index)=>{
+        {boardGet.map((boards,index)=>{
           return(
             <Link to={`/Pages/${boards.id}`} key={index}><div className="boards">{boards.title}</div></Link>
           )
         })}
         </StNoticeBoard>
         <Link to={"/BoardWrite"}>
-          <StButton >게시글 작성</StButton>
+          <StButton>게시글 작성</StButton>
         </Link>
       </div>
     </div>
