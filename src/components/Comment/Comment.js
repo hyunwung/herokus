@@ -1,30 +1,54 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCommentIdAsync ,deleteCommentIdAsync } from "../../redux/modules/comment";
+import { getCommentIdAsync ,deleteCommentIdAsync ,updateCommentIdAsync } from "../../redux/modules/comment";
 import "./Comment.css"
 
 const Comment = ({id}) => {
+    const [state,setState] = useState(false)
+    const [update,setUpdate] = useState(false)
+    const [inputCm,setInputCm] = useState("")
+
+    const onChange = (e) =>{
+        setInputCm(e.target.value)
+    }
+    const updateComment = () => {
+        dispatch(updateCommentIdAsync({
+            boardsid:id,
+            comment:inputCm
+            })
+        )
+    }
     const deleteComment = (commentid) => {
         dispatch(deleteCommentIdAsync(commentid))
+        setState(!state)
     }
     const dispatch = useDispatch();
     const comment = useSelector((state)=>state.comment)
-    console.log(comment)
+    console.log("보여봐라!",comment)
     useEffect(()=>{
-        dispatch(getCommentIdAsync(id.id));    
-    },[])
+        dispatch(getCommentIdAsync(id));   
+        // return () => {
+        //     dispatch(getCommentIdAsync(id.id));
+        // }
+    },[state])
     return (
-    <div className='comment'>
+    <div className='comment'>   
+        <div className="comment-item">
         {comment.map((comments,index)=>{
             return(
-                <div key={index} className="comment-item">
-                    <div>{comments.comment}</div>
-                    <button onClick={()=>{deleteComment(comments.id)}}>삭제</button>
+                <div key={index}>{comments.comment}
+                    <button onClick={()=>deleteComment(comments.id)}>삭제</button>
+                    {update ? <div>
+                                <input></input>
+                                {/* <input value ={inputCm} onChange={onChange}></input> */}
+                                <button onClick={()=>updateComment}>수정하기</button>
+                                </div> : null}
+                    <button onClick={()=>setUpdate((update) => !update)}>수정</button>
                 </div>
-            )
-        })}
+                )})}
+        </div>
     </div>
   )
 }
 
-export default Comment
+export default React.memo(Comment)
