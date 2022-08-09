@@ -21,54 +21,44 @@
       "content": "참고하시라우"
     }
   ],
-  "comment": [
+  "comments": [
     {
       "id": 1,
-      "comments": [
-        {
-          "id": 2,
-          "comment": "가가"
-        }
-      ]
+      "boardsid":1,
+      "comment":"ㅇㅋ"
     },
     {
       "id": 2,
-      "comments": [
-        {
-          "id": 1,
-          "comment": "두두"
-        },
-        {
-          "id": 2,
-          "comment": "쿠쿠루삥뽕"
-        }
-      ]
+      "boardsid":1,
+      "comment": "ㅋㅋ"
     },
     {
       "id": 3,
-      "comments": [
-        {
-          "id": 1,
-          "comment": "가가"
-        },
-        {
-          "id": 2,
-          "comment": "디디"
-        }
-      ]
+      "boardsid":2,
+      "comment": "ㄹㅇ"
     },
     {
-      "id": 4,
-      "comments": [
-        {
-          "id": 1,
-          "comment": "ㅋㅋ"
-        },
-        {
-          "id": 2,
-          "comment": "ㄹㅇ"
-        }
-      ]
+      "id":4,
+      "boardsid":3,
+      "comment":"이것도"
+    }
+  ],
+  "preference":[
+    {
+      "id":1,
+      "count":0
+    },
+    {
+      "id":2,
+      "count":0
+    },
+    {
+      "id":3,
+      "count":0
+    },
+    {
+      "id":4,
+      "count":0
     }
   ]
 }

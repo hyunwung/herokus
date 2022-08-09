@@ -2,18 +2,11 @@ import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
 let url1 = "http://localhost:5000/boards"
-let url2 = "http://localhost:5000/comment"
 
 export const getBoardsAsync = createAsyncThunk( // 게시판 조회 , 찾기
     "board/getTodosAsync",
     async ()=>{
         const response = await axios.get(url1)
-        return response.data
-})
-export const getCommentIdAsync = createAsyncThunk( // 댓글 조회 , 찾기
-    "comment/getTodosAsync",
-    async (id) => {
-        const response = await axios.get(url2+`/${id}`)
         return response.data
 })
 
@@ -49,10 +42,6 @@ export const noticeSlice = createSlice({
       //   console.log("fetching data !")
       //   return [...payload]
       // },
-      [getCommentIdAsync.fulfilled]:(state,action) => {
-        console.log("fetching data successfully")
-        
-      },
     }
   });
   

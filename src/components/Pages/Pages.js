@@ -1,22 +1,19 @@
-import React from 'react'
+import React from "react";
 import Header from '../Header/Header'
 import styled from 'styled-components'
 import Comment from '../Comment/Comment'
 import { useParams } from 'react-router-dom'
 
 function Pages() {
-    const { idValue } = useParams()
-    console.log(idValue)
+    const id = useParams()
   return (
     <>  
         <Header/>
         <ContentBox>여기엔 내용이 들어갑니당~</ContentBox>
         <CommentContainer>
-        <CommentBox>
-            <Comment id = {1}></Comment>
-        </CommentBox>
-        <CommentInput type= "text"/>
-        <CommentBtn>댓글 추가</CommentBtn>
+            <Comment id={id}></Comment>
+            <CommentInput type= "text"/>
+            <CommentBtn>댓글 추가</CommentBtn>
         </CommentContainer>
     </>
   )
@@ -26,11 +23,11 @@ export default Pages
 
 
 const ContentBox = styled.div`
- width: 800px;
- height: 300px;
- margin: 40px auto;
- display: flex;
- border: 1px solid black;
+    width: 800px;
+    height: 300px;
+    margin: 40px auto;
+    display: flex;
+    border: 1px solid black;
 `
 
 const CommentContainer = styled.div`
