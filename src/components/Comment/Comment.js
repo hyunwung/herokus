@@ -52,8 +52,13 @@ const Comment = ({id}) => {
                 </div>
                 )})}
         </div>
+
     </div>
   )
 }
 
-export default React.memo(Comment)
+
+export default Comment
+
+
+

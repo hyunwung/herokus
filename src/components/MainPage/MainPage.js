@@ -9,6 +9,7 @@ import { getBoardsAsync } from "../../redux/modules/notice";
 const MainPage = ()=>{
   const dispatch = useDispatch();
   const boardGet = useSelector((state)=>state.notice)
+
   
   useEffect(()=>{
     dispatch(getBoardsAsync());
@@ -20,6 +21,7 @@ const MainPage = ()=>{
         <StNoticeBoard>
         {boardGet.map((boards,index)=>{
           return(
+          
             <Link to={`/Pages/${boards.id}`} key={index}><div className="boards">{boards.title}</div></Link>
           )
         })}

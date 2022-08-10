@@ -1,4 +1,5 @@
-import { createSlice , createAsyncThunk } from "@reduxjs/toolkit";
+
+import { createSlice , createAsyncThunk ,createEntityAdapter} from "@reduxjs/toolkit";
 import axios from 'axios';
 
 let url2 = "http://localhost:5000/comments"
@@ -12,6 +13,9 @@ export const getCommentIdAsync = createAsyncThunk( // 댓글 조회 , 찾기
 export const postCommentIdAsync = createAsyncThunk( // 댓글 달기
     "comment/postTodosAsync",
     async (payload) => {
+
+
+
         const response = await axios.post(url2,{
           boardsid:payload.boardsid,
           comment: payload.comment,
@@ -28,6 +32,7 @@ export const updateCommentIdAsync = createAsyncThunk( // 댓글 수정
         })
         console.log(response.data)
         return response.data
+
 })
 export const deleteCommentIdAsync = createAsyncThunk( // 댓글 삭제
     "comment/deleteTodosAsync",
@@ -36,7 +41,18 @@ export const deleteCommentIdAsync = createAsyncThunk( // 댓글 삭제
         return response,payload
 })
 
+
+export const deleteAllCommentAsync = createAsyncThunk( // 게시글 삭제시 댓글도 함께 삭제
+  "comment/deleteAllCommentAsync",
+  async (id,thunkAPI) => {
+    const response = await axios.delete(`http://localhost:5000/comments/${id}`)
+    console.log(response)
+  }
+)
+
+
 const initialState = [{
+
 }]
 
 export const commentSlice = createSlice({
@@ -53,6 +69,11 @@ export const commentSlice = createSlice({
         // console.log(state.payload)
         return payload
       },
+
+      [deleteAllCommentAsync.fulfilled]:(state,{payload}) => {
+        console.log(payload)
+      },
+
       [postCommentIdAsync.fulfilled]:(state,{payload}) => {
         console.log("data 등록!")
         
