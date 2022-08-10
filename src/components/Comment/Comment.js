@@ -18,7 +18,12 @@ const Comment = ({id}) => {
             })
         )
     }
-    const deleteComment = (commentid) => {
+    const updateBtn = (e) => {
+        e.preventDefault()
+        setUpdate(!update)
+    }
+    const deleteComment = (commentid,e) => {
+        e.preventDefault();
         dispatch(deleteCommentIdAsync(commentid))
         setState(!state)
     }
@@ -43,7 +48,7 @@ const Comment = ({id}) => {
                                 {/* <input value ={inputCm} onChange={onChange}></input> */}
                                 <button onClick={()=>updateComment}>수정하기</button>
                                 </div> : null}
-                    <button onClick={()=>setUpdate((update) => !update)}>수정</button>
+                    <button onClick={updateBtn}>수정</button>
                 </div>
                 )})}
         </div>

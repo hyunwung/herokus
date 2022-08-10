@@ -7,8 +7,8 @@
     },
     {
       "id": 2,
-      "title": "테스트",
-      "content": "서현웅"
+      "title": "변경요2",
+      "content": "변경요"
     },
     {
       "title": "알려주는 예시용",
@@ -22,11 +22,6 @@
     }
   ],
   "comments": [
-    {
-      "id": 3,
-      "boardsid": 2,
-      "comment": "ㄹㅇ"
-    },
     {
       "id": 4,
       "boardsid": 3,

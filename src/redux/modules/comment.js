@@ -37,14 +37,11 @@ export const deleteCommentIdAsync = createAsyncThunk( // 댓글 삭제
 })
 
 const initialState = [{
-    id : 1,
-    comment  : "차라리 죽여줘",
-    boardsid: "4",
 }]
 
 export const commentSlice = createSlice({
     name: "comment",
-    initialState : initialState,
+    initialState ,
     reducers: {
         increment:(state)=>{
             state.value +=1
