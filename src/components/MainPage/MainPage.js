@@ -1,57 +1,67 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./MainPage.css";
 import styled from "styled-components";
 import Header from "../Header/Header";
-// import { useState } from "react"
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getBoardsAsync } from "../../redux/modules/notice";
 
-function MainPage() {
+const MainPage = ()=>{
+  const dispatch = useDispatch();
+  const boardGet = useSelector((state)=>state.notice)
+  console.log(boardGet)
+  
+  useEffect(()=>{
+    dispatch(getBoardsAsync());
+  },[])
   return (
     <div className="MainPage">
       <Header/>
-      <StNoticeBoard>
-        임시 박스
-        
-      </StNoticeBoard>
-        
-
-
-
-
-
-      
-      <div>
-        <StButton>게시글 작성</StButton>
+      <div className="container">
+        <StNoticeBoard>
+        {boardGet.map((boards,index)=>{
+          return(
+            <Link to={`/Pages/${boards.id}`} key={index}>
+              <div className="boards">
+              {boards.title}
+              </div></Link>
+          )
+        })}
+        </StNoticeBoard>
+        <Link to={"/BoardWrite"}>
+          <StButton>게시글 작성</StButton>
+        </Link>
       </div>
     </div>
   );
 }
 
-export default MainPage;
-
 const StNoticeBoard = styled.div`
-  border: 2px solid black;
+  border: none;
   background-color: white;
-  height: 600px;
-  width: 1000px;
-  margin: 150px auto 0 auto;
-  border: 2px solid black;
-  display: flex;
-  align-items: center;
-  /* justify-content: center; */
+  max-width: 1200px;
+  width:1000px;
+  height : 750px;
+  border-radius: 8px;
+  display:flex;
   flex-direction: column;
-  border-radius: 8px;
-`;
-
-const StButton = styled.button`
-  border: 2px solid black;
-  background-color: white;
-  /* border:none; */
-  width: 150px;
-  height: 40px;
-  border-radius: 8px;
-  cursor: pointer;
-  float: right;
-  margin-right: 150px;
+  align-items:center;
   
 `;
 
+const StButton = styled.button`
+  margin-top:7px;
+  border: none;
+  background-color: rgb(30, 144, 255);
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+  color:white;
+  cursor: pointer;
+  float: right;
+  font-size:18px;
+  font-weight: bold;
+`;
+
+export default MainPage;
+export { StNoticeBoard }

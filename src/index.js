@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-
+import "./index.css"
 // 우리가 추가할 코드
 import store from "./redux/config/configstore";
 import { Provider } from "react-redux";

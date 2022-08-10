@@ -1,11 +1,12 @@
-import { createStore } from "redux";
-import { combineReducers } from "redux";
-import notice from "../modules/notice"
+import {configureStore} from "@reduxjs/toolkit";
+import noticeReducer from "../modules/notice";
+import comment from "../modules/comment";
+// import postLoginAsync from "../modules/login";
 
-const rootReducer = combineReducers({
-    notice,
-
-});
-const store = createStore(rootReducer);
-
-export default store;
+export default configureStore({
+    reducer:{
+        notice:noticeReducer,
+        // login:postLoginAsync,
+        comment,
+    }
+})
