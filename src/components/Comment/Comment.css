@@ -17,4 +17,11 @@
     margin: 0 auto;
     margin-bottom: 5px;
 
+
+
+}
+
+.active{
+    display: none;
+
 }

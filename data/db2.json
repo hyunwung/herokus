@@ -1,0 +1,30 @@
+{
+  "boards": [
+    {
+      "id": 2,
+      "title": "감자는 사실 맛 없어.",
+      "content": "맞음 싹튼거 먹으면 죽음",
+      "comment": [
+        {
+          "id": 1,
+          "comments": "소소"
+        },
+        {
+          "id": 2,
+          "comments": "냠냠"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "test1",
+      "content": "서현웅"
+    }
+  ],
+  "comments": [
+    {
+      "id": 2,
+      "comment": "나는 바보"
+    }
+  ]
+}

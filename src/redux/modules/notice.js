@@ -10,11 +10,12 @@ export const getBoardsAsync = createAsyncThunk( // 게시판 조회 , 찾기
         return response.data
 })
 
+
 export const deleteBoardsAsync = createAsyncThunk( // 게시판 삭제
   "board/deleteBoardsAsync",
   async (id,thunkAPI) => {
     const response = await axios.delete(`http://localhost:5000/boards/${id}`)
-    console.log(response) 
+    return respones.data
   }
 )
 
@@ -25,7 +26,6 @@ async (payload, thunkAPI) => {
     title : payload.title,
     content : payload.content
   })
-  console.log (data)
   return data.data
 }
 )
@@ -58,12 +58,14 @@ export const noticeSlice = createSlice({
         console.log("fetching data !")
         return [...payload]
       },
+
       [deleteBoardsAsync.fulfilled]:(state,{payload}) => {
         console.log(payload)
       },
       [EditBoardsAsync.fulfilled] : (state,{payload}) => {
         console.log(payload)
       },
+
       // [getCommentAsync.fulfilled]:(state,{payload}) => {
       //   console.log("fetching data !")
       //   return [...payload]

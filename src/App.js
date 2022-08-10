@@ -5,7 +5,10 @@ import Pages from "./components/Pages/Pages";
 import BoardWrite from "./components/BoardWrite/BoardWrite";
 import "./App.css"
 import Comment from "./components/Comment/Comment";
+
 import EditBoard from "./components/EditBoard/EditBoard";
+
+
 
 const App = ()=>{
   return (
@@ -14,7 +17,10 @@ const App = ()=>{
       <Route path = {"/Pages/:id"} element = {<Pages/>}/>
       <Route path = {"/comment"} element = {<Comment/>}/>
       <Route path = {"/BoardWrite"} element = {<BoardWrite/>}/>
+
       <Route path = {"/Pages/:id/EditBoard"} element = {<EditBoard/>}/>
+
+
     </Routes>
   );
 }

@@ -1,27 +1,50 @@
-import React, { useEffect} from "react";
+import React, { useState ,useEffect } from "react";
 import Header from '../Header/Header'
 import styled from 'styled-components'
 import Comment from '../Comment/Comment'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux"
 import {deleteBoardsAsync,getBoardsAsync} from "../../redux/modules/notice" 
-import {deleteAllCommentAsync} from "../../redux/modules/comment"
-import { useNavigate } from 'react-router-dom'
+import { postCommentIdAsync ,getCommentIdAsync,deleteAllCommentAsync} from "../../redux/modules/comment";
+
 
 
 function Pages() {
+
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const params = useParams();
     const boardGet = useSelector((state) => state.notice);
     const board = boardGet.find((cur) => cur.id == params.id);
+    const dispatch = useDispatch();
+    
+    const {id} = useParams()
+    const [comment,setComment] = useState("")
 
-
-  useEffect(() => {
+    const commentHandle = (e) => {
+        setComment(e.target.value)
+    }
+    const addComment = (e) => {
+        e.preventDefault();
+        if (comment === ""){
+            alert("댓글을 작성 해주세요.")
+        }
+        dispatch(
+            postCommentIdAsync({
+                boardsid:id,
+                comment:comment
+            })
+        )
+        setComment("")
+    }
+    
+     useEffect(() => {
     dispatch(getBoardsAsync());
   }, []);
-    
-    
+  
+    useEffect(()=>{
+        dispatch(getCommentIdAsync(id));
+    },[comment])
+
 
   return (
     <>  
@@ -43,9 +66,13 @@ function Pages() {
             수정하기</button>
         </ContentBox>
         <CommentContainer>
-            <Comment id={params}></Comment>
+           {/*<Comment id={params}></Comment>
             <CommentInput type= "text"/>
-            <CommentBtn>댓글 추가</CommentBtn>
+            <CommentBtn>댓글 추가</CommentBtn>*/}
+
+            <Comment id={id}></Comment>
+            <CommentInput value = {comment} type= "text" onChange={commentHandle}/>
+            <CommentBtn onClick={addComment} type="submit">댓글 추가</CommentBtn>
         </CommentContainer>
     </>
   )
@@ -62,7 +89,7 @@ const ContentBox = styled.div`
     border: 1px solid black;
 `
 
-const CommentContainer = styled.div`
+const CommentContainer = styled.form`
     width: 800px;
     height: auto;
     margin: 20px auto;

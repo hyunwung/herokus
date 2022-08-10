@@ -1,3 +1,4 @@
+
 import { createSlice , createAsyncThunk ,createEntityAdapter} from "@reduxjs/toolkit";
 import axios from 'axios';
 
@@ -12,10 +13,26 @@ export const getCommentIdAsync = createAsyncThunk( // 댓글 조회 , 찾기
 export const postCommentIdAsync = createAsyncThunk( // 댓글 달기
     "comment/postTodosAsync",
     async (payload) => {
-        const response = await axios.get(url2+`/${payload}`,{
 
+
+
+        const response = await axios.post(url2,{
+          boardsid:payload.boardsid,
+          comment: payload.comment,
         })
-        return 
+        
+        return response.data
+})
+export const updateCommentIdAsync = createAsyncThunk( // 댓글 수정
+    "comment/postTodosAsync",
+    async (payload) => {
+        const response = await axios.patch(url2+`/${payload}`,{
+          boardsid:payload.boardsid,
+          comment: payload.comment,
+        })
+        console.log(response.data)
+        return response.data
+
 })
 export const deleteCommentIdAsync = createAsyncThunk( // 댓글 삭제
     "comment/deleteTodosAsync",
@@ -23,6 +40,7 @@ export const deleteCommentIdAsync = createAsyncThunk( // 댓글 삭제
         const response = await axios.delete(url2+`/${payload}`)
         return response,payload
 })
+
 
 export const deleteAllCommentAsync = createAsyncThunk( // 게시글 삭제시 댓글도 함께 삭제
   "comment/deleteAllCommentAsync",
@@ -32,18 +50,14 @@ export const deleteAllCommentAsync = createAsyncThunk( // 게시글 삭제시 �
   }
 )
 
-const commentAdapt = createEntityAdapter({
-  selectId: (comment) => comment.id
-})
 
 const initialState = [{
-    id : 1,
-    comment  : "차라리 죽여줘",
+
 }]
 
 export const commentSlice = createSlice({
     name: "comment",
-    initialState : initialState,
+    initialState ,
     reducers: {
         increment:(state)=>{
             state.value +=1
@@ -55,13 +69,18 @@ export const commentSlice = createSlice({
         // console.log(state.payload)
         return payload
       },
-      [deleteCommentIdAsync.fulfilled]:(state,{payload}) => {
-        state.loading = false
-        commentAdapt.removeOne(state.payload)
-      },
+
       [deleteAllCommentAsync.fulfilled]:(state,{payload}) => {
         console.log(payload)
       },
+
+      [postCommentIdAsync.fulfilled]:(state,{payload}) => {
+        console.log("data 등록!")
+        
+      },
+      [deleteCommentIdAsync.fulfilled]:(state,{payload}) => {
+        console.log("data delete !")
+      }
     }
   });
   
