@@ -1,0 +1,74 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "감자는 사실 맛 있어.",
+      "content": "맞음 싹튼거 먹으면 안죽음"
+    },
+    {
+      "id": 2,
+      "title": "변경요2",
+      "content": "변경요"
+    },
+    {
+      "title": "알려주는 예시용",
+      "content": "참고",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "title": "예시2",
+      "content": "참고하시라우"
+    }
+  ],
+  "comments": [
+    {
+      "id": 4,
+      "boardsid": 3,
+      "comment": "이것도"
+    },
+    {
+      "boardsid": 2,
+      "comment": "추가요",
+      "id": 5
+    },
+    {
+      "boardsid": "3",
+      "comment": "ㅇㅇㅇ",
+      "id": 6
+    },
+    {
+      "boardsid": "3",
+      "comment": "ㅇㅇㅇㅇㅇ",
+      "id": 7
+    },
+    {
+      "boardsid": "4",
+      "comment": "여기도",
+      "id": 8
+    },
+    {
+      "boardsid": "1",
+      "comment": "dddd",
+      "id": 9
+    }
+  ],
+  "preference": [
+    {
+      "id": 1,
+      "count": 0
+    },
+    {
+      "id": 2,
+      "count": 0
+    },
+    {
+      "id": 3,
+      "count": 0
+    },
+    {
+      "id": 4,
+      "count": 0
+    }
+  ]
+}

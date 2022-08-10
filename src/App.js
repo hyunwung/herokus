@@ -1,11 +1,19 @@
-import './App.css';
+import React from "react";
+import { Route, Routes} from "react-router-dom";
+import MainPage from "./components/MainPage/MainPage";
+import Pages from "./components/Pages/Pages";
+import BoardWrite from "./components/BoardWrite/BoardWrite";
+import "./App.css"
+import Comment from "./components/Comment/Comment";
 
 const App = ()=>{
   return (
-    <div className="App">
-      <Btn>안녕</Btn>
-      <Btn>뒤로가기</Btn>
-    </div>
+    <Routes>
+      <Route path = {"/"} element = {<MainPage/>}/>
+      <Route path = {"/Pages/:id"} element = {<Pages/>}/>
+      <Route path = {"/comment"} element = {<Comment/>}/>
+      <Route path = {"/BoardWrite"} element = {<BoardWrite/>}/>
+    </Routes>
   );
 }
 
