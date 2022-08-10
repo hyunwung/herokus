@@ -1,5 +1,5 @@
 
-import { createSlice , createAsyncThunk ,createEntityAdapter} from "@reduxjs/toolkit";
+import { createSlice , createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 
 let url2 = "http://localhost:5000/comments"
@@ -13,21 +13,18 @@ export const getCommentIdAsync = createAsyncThunk( // 댓글 조회 , 찾기
 export const postCommentIdAsync = createAsyncThunk( // 댓글 달기
     "comment/postTodosAsync",
     async (payload) => {
-
-
-
+      parseInt(payload.boardsId)
         const response = await axios.post(url2,{
-          boardsid:payload.boardsid,
+          boardsId:payload.boardsId,
           comment: payload.comment,
         })
-        
         return response.data
 })
 export const updateCommentIdAsync = createAsyncThunk( // 댓글 수정
     "comment/postTodosAsync",
     async (payload) => {
-        const response = await axios.patch(url2+`/${payload}`,{
-          boardsid:payload.boardsid,
+        const response = await axios.patch(url2+`/${payload.id}`,{
+          // boardsid:payload.boardsid,
           comment: payload.comment,
         })
         console.log(response.data)
@@ -42,13 +39,14 @@ export const deleteCommentIdAsync = createAsyncThunk( // 댓글 삭제
 })
 
 
-export const deleteAllCommentAsync = createAsyncThunk( // 게시글 삭제시 댓글도 함께 삭제
-  "comment/deleteAllCommentAsync",
-  async (id,thunkAPI) => {
-    const response = await axios.delete(`http://localhost:5000/comments/${id}`)
-    console.log(response)
-  }
-)
+// export const deleteAllCommentAsync = createAsyncThunk( // 게시글 삭제시 댓글도 함께 삭제
+//   "comment/deleteAllCommentAsync",
+//   async (id,thunkAPI) => {
+//     const response = await axios.delete(`http://localhost:5000/comments/${id}`)
+//     console.log("진행해."+response)
+//     return response.data
+//   }
+// )
 
 
 const initialState = [{
@@ -65,21 +63,19 @@ export const commentSlice = createSlice({
     },
     extraReducers:{
       [getCommentIdAsync.fulfilled]:(state,{payload}) => {
-        console.log("data !")
+        console.log("data ! 호출")
         // console.log(state.payload)
         return payload
       },
-
-      [deleteAllCommentAsync.fulfilled]:(state,{payload}) => {
-        console.log(payload)
-      },
-
       [postCommentIdAsync.fulfilled]:(state,{payload}) => {
         console.log("data 등록!")
         
       },
       [deleteCommentIdAsync.fulfilled]:(state,{payload}) => {
         console.log("data delete !")
+      },
+      [updateCommentIdAsync.fulfilled]:(state,{payload}) => {
+        console.log("data update !")
       }
     }
   });

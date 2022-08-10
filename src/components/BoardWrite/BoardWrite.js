@@ -1,44 +1,70 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from "react-redux";
-import {addnotice} from '../../redux/modules/notice';
+import {addnotice,__postboards} from '../../redux/modules/notice';
 import { getLoginAsync } from "../../redux/modules/login";
 import Header from '../Header/Header'
+import { useNavigate } from 'react-router-dom'
 
 function BoardWrite() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   
-  const [title,setTitle] = useState("");
-  const [content,setCotent] = useState("");
-  const titleControl = (e) =>{
-    e.preventDefault();
-    setTitle(e.target.value)
+  const [boards, setBoards] = useState({
+    title : "",
+    content : "",
+  })
+  const {title , content} = boards;
+
+  const onChangeHandler = (e)  => {
+    const {name, value} = e.target;
+    setBoards({...boards,[name] : value})
+  }
+
+  // const titleControl = (e) =>{
+  //   e.preventDefault();
+  //   setBoards(e.target.value)
     
-  }
-  const contentControl = (e) =>{
+  // }
+  // const contentControl = (e) =>{
+  //   e.preventDefault();
+  //   setCotents(e.target.value)
+  // }
+
+  const onSubmitHandler = (e) => {
     e.preventDefault();
-    setCotent(e.target.value)
+    if (boards.title === "" || boards.content === "")
+      return alert("내용을 입력하세요.")
+    dispatch(__postboards({
+      title : boards.title,
+      content : boards.content,
+    }))
+    navigate("/")
+    // setBoards({
+    //   title : "",
+    //   content : "",
+    // })
   }
-  const submitCotent = (e) =>{    
-    e.preventDefault();
-    if(title==="" || content===""){
-      alert("둘 다 작성해라..")
-      return
-      }
-      dispatch(addnotice({
-          title:title,
-          content:content,
-      }))
-    setTitle("")
-    setCotent("")
-  }
+  // const submitCotent = (e) =>{    
+  //   e.preventDefault();
+  //   if(titles==="" || contents===""){
+  //     alert("둘 다 작성해라..")
+  //     return
+  //     }
+  //     dispatch(addnotice({
+  //         title:titles,
+  //         content:contents,
+  //     }))
+  //   setTitles("")
+  //   setCotents("")
+  // }
   return (
     <>
       <Header/>
       <form className='board-Container'>
-        <BorderTitle value = {title} onChange={titleControl} type= "text" placeholder = "제목을 입력해 주세요."/>
-        <BorderContent value = {content} onChange={contentControl} type = "text" placeholder = "내용을 입력해 주세요."/>
-        <Addbtn onClick={submitCotent} type="submit">게시글 추가</Addbtn>
+        <BorderTitle name = "title" value = {boards.title} onChange={onChangeHandler} type= "text" placeholder = "제목을 입력해 주세요."/>
+        <BorderContent name = "content" value = {boards.content} onChange={onChangeHandler} type = "text" placeholder = "내용을 입력해 주세요."/>
+        <Addbtn onClick={onSubmitHandler} type="submit">게시글 추가</Addbtn>
       </form>
     </>
   )

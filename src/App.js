@@ -15,7 +15,6 @@ const App = ()=>{
     <Routes>
       <Route path = {"/"} element = {<MainPage/>}/>
       <Route path = {"/Pages/:id"} element = {<Pages/>}/>
-      <Route path = {"/comment"} element = {<Comment/>}/>
       <Route path = {"/BoardWrite"} element = {<BoardWrite/>}/>
 
       <Route path = {"/Pages/:id/EditBoard"} element = {<EditBoard/>}/>

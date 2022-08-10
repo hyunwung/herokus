@@ -9,13 +9,28 @@ export const getBoardsAsync = createAsyncThunk( // 게시판 조회 , 찾기
         const response = await axios.get(url1)
         return response.data
 })
-
+export const __postboards = createAsyncThunk(
+  "boards/postboards",
+  async (args, thunkAPI) => {
+    try {
+      // const {title, content} = {...args};
+      const response = await axios.post("http://localhost:5000/boards", {
+        title:args.title,
+        content:args.content,
+      }) 
+      return thunkAPI.fulfillWithValue[response.data]; 
+    }catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const deleteBoardsAsync = createAsyncThunk( // 게시판 삭제
   "board/deleteBoardsAsync",
   async (id,thunkAPI) => {
     const response = await axios.delete(`http://localhost:5000/boards/${id}`)
-    return respones.data
+    console.log("complete")
+    return response.data
   }
 )
 
@@ -58,7 +73,9 @@ export const noticeSlice = createSlice({
         console.log("fetching data !")
         return [...payload]
       },
-
+      [__postboards.fulfilled] : (state, action) => {
+        console.log("처리")
+      },
       [deleteBoardsAsync.fulfilled]:(state,{payload}) => {
         console.log(payload)
       },

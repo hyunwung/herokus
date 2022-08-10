@@ -5,21 +5,20 @@ import Comment from '../Comment/Comment'
 import { useParams, useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux"
 import {deleteBoardsAsync,getBoardsAsync} from "../../redux/modules/notice" 
-import { postCommentIdAsync ,getCommentIdAsync,deleteAllCommentAsync} from "../../redux/modules/comment";
+import { postCommentIdAsync ,getCommentIdAsync} from "../../redux/modules/comment";
 
 
 
 function Pages() {
-
     const navigate = useNavigate();
-    const params = useParams();
+    const {id} = useParams()
+    const params = parseInt(id)
     const boardGet = useSelector((state) => state.notice);
-    const board = boardGet.find((cur) => cur.id == params.id);
+    const board = boardGet.find((cur) => cur.id == params);
     const dispatch = useDispatch();
     
-    const {id} = useParams()
+    
     const [comment,setComment] = useState("")
-
     const commentHandle = (e) => {
         setComment(e.target.value)
     }
@@ -30,7 +29,7 @@ function Pages() {
         }
         dispatch(
             postCommentIdAsync({
-                boardsid:id,
+                boardsId:params,
                 comment:comment
             })
         )
@@ -39,10 +38,10 @@ function Pages() {
     
      useEffect(() => {
     dispatch(getBoardsAsync());
-  }, []);
+    }, []);
   
     useEffect(()=>{
-        dispatch(getCommentIdAsync(id));
+        dispatch(getCommentIdAsync(params));
     },[comment])
 
 
@@ -54,8 +53,8 @@ function Pages() {
             {board.content}
             <button
             onClick={() => {
-                dispatch(deleteBoardsAsync(params.id))
-                dispatch(deleteAllCommentAsync(params.id))
+                dispatch(deleteBoardsAsync(params))
+                // dispatch(deleteAllCommentAsync(params))
                 navigate("/")
             }}
             >삭제하기</button>
@@ -66,11 +65,8 @@ function Pages() {
             수정하기</button>
         </ContentBox>
         <CommentContainer>
-           {/*<Comment id={params}></Comment>
-            <CommentInput type= "text"/>
-            <CommentBtn>댓글 추가</CommentBtn>*/}
 
-            <Comment id={id}></Comment>
+            <Comment id={params}></Comment>
             <CommentInput value = {comment} type= "text" onChange={commentHandle}/>
             <CommentBtn onClick={addComment} type="submit">댓글 추가</CommentBtn>
         </CommentContainer>

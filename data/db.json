@@ -1,74 +1,55 @@
 {
   "boards": [
     {
-      "id": 1,
-      "title": "감자는 사실 맛 있어.",
-      "content": "맞음 싹튼거 먹으면 안죽음"
+      "title": "ㅇㅇㅇ",
+      "content": "ㅇㅇㅇㅇ",
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "변경요2",
-      "content": "변경요"
+      "title": "ㅇㅇ",
+      "content": "ㅇㅇㅇㅇ",
+      "id": 2
     },
     {
-      "title": "알려주는 예시용",
-      "content": "참고",
+      "title": "ㅁㄴㅇㅁ",
+      "content": "ㅇㅁㅇㅁㅁㄴ",
       "id": 3
     },
     {
-      "id": 4,
-      "title": "예시2",
-      "content": "참고하시라우"
-    }
-  ],
-  "comments": [
-    {
-      "id": 4,
-      "boardsid": 3,
-      "comment": "이것도"
+      "title": "ㅇㅁㄴㅇ",
+      "content": "ㅇㅁㄴㅇㅁㅁㅇㅁㅇ",
+      "id": 4
     },
     {
-      "boardsid": 2,
-      "comment": "추가요",
+      "title": "ㅇㄴㅁㅇㅁㄴㅇㅁ",
+      "content": "ㅇㅁㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ",
       "id": 5
     },
     {
-      "boardsid": "3",
-      "comment": "ㅇㅇㅇ",
+      "title": "ㅇㅁㄴㅇㅁㄴㅇ",
+      "content": "ㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅇ",
       "id": 6
     },
     {
-      "boardsid": "3",
-      "comment": "ㅇㅇㅇㅇㅇ",
+      "title": "가나",
+      "content": "다라",
       "id": 7
     },
     {
-      "boardsid": "4",
-      "comment": "여기도",
+      "title": "나라",
+      "content": "맛슬",
       "id": 8
     },
     {
-      "boardsid": "1",
-      "comment": "dddd",
+      "title": "도로",
+      "content": "ㅁ엄어",
       "id": 9
+    },
+    {
+      "title": "처리",
+      "content": "완",
+      "id": 10
     }
   ],
-  "preference": [
-    {
-      "id": 1,
-      "count": 0
-    },
-    {
-      "id": 2,
-      "count": 0
-    },
-    {
-      "id": 3,
-      "count": 0
-    },
-    {
-      "id": 4,
-      "count": 0
-    }
-  ]
+  "comments": []
 }
