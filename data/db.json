@@ -1,41 +1,8 @@
 {
   "boards": [
-    {
-      "title": "여기다 수정하고 싶은 내용을 쓰자",
-      "content": "진짜로 써라",
-      "id": 1
-    },
-    {
-      "title": "123312321",
-      "content": "31232312123",
-      "id": 2
-    },
-    {
-      "title": "t수정되나",
-      "content": "수정되나",
-      "id": 3
-    },
-    {
-      "title": "title",
-      "content": "text",
-      "id": 4
-    },
-    {
-      "title": "1번 게시물 입니다.",
-      "content": "1번 내용이지요",
-      "id": 5
-    }
+   
   ],
   "comments": [
-    {
-      "boardsId": 2,
-      "comment": "1232123",
-      "id": 2
-    },
-    {
-      "boardsId": 2,
-      "comment": "12312321231232",
-      "id": 3
-    }
+    
   ]
 }

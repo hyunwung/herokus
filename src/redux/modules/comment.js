@@ -7,7 +7,7 @@ let url2 = "http://localhost:5000/comments"
 export const getCommentIdAsync = createAsyncThunk( // 댓글 조회 , 찾기
     "comment/getTodosAsync",
     async (payload) => {
-        const response = await axios.get(url2+`?boardsid=${payload}`)
+        const response = await axios.get(url2+`?boardsId=${payload}`)
         return response.data
 })
 export const postCommentIdAsync = createAsyncThunk( // 댓글 달기

@@ -4,22 +4,21 @@ import styled from 'styled-components'
 import Comment from '../Comment/Comment'
 import { useParams, useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux"
-import {deleteBoardsAsync,getBoardsAsync} from "../../redux/modules/notice" 
+import {getBoardAsync} from "../../redux/modules/boards"
+import {deleteBoardsAsync} from "../../redux/modules/notice" 
 import { postCommentIdAsync ,getCommentIdAsync} from "../../redux/modules/comment";
 import "./Pages.css";
 
-
-
 function Pages() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [check,setCheck] = useState(false)
     const {id} = useParams()
     const params = parseInt(id)
-    const boardGet = useSelector((state) => state.notice);
-    const board = boardGet.find((cur) => cur.id == params);
-    const dispatch = useDispatch();
-    
-    
+
+    const board = useSelector((state) => state.boards);
     const [comment,setComment] = useState("")
+
     const commentHandle = (e) => {
         setComment(e.target.value)
     }
@@ -35,60 +34,53 @@ function Pages() {
             })
         )
         setComment("")
+        setCheck(!check)
     }
-    
-     useEffect(() => {
-    dispatch(getBoardsAsync());
-    }, []);
-  
     useEffect(()=>{
+        dispatch(getBoardAsync(params));
         dispatch(getCommentIdAsync(params));
-    },[comment])
+    },[check])
 
 
   return (
-    <>  
+    <>
         <Header/>
-        
-        <ContentBox>
-
-            
-            <StTitleText>
-                {board.title}
-            </StTitleText>
-            <StBodyText>
-                {board.content}
-            </StBodyText>
-            
-            
-        </ContentBox>
-        <StButtons>
-            <button className="button2"
-            onClick={() => {
-                dispatch(deleteBoardsAsync(params))
-                // dispatch(deleteAllCommentAsync(params))
-                navigate("/")
-            }}
-            >삭제하기</button>
-            <button className="button"
-            onClick={() => {
-                navigate("EditBoard")
-            }}>
-            수정하기</button>
-        </StButtons>
-        <CommentContainer>
-
-            <Comment id={params}></Comment>
-            <CommentInput value = {comment} type= "text" onChange={commentHandle}/>
-            <CommentBtn onClick={addComment} type="submit">댓글 추가</CommentBtn>
-        </CommentContainer>
-        
+        <div className="pages">  
+            <div className="pages-container">
+                <ContentBox>
+                    <StTitleText>
+                        {board["title"]}
+                    </StTitleText>
+                    <StBodyText>
+                        {board["content"]}
+                    </StBodyText>
+                </ContentBox>
+                <StButtons>
+                    <button className="button2"
+                    onClick={() => {
+                        dispatch(deleteBoardsAsync(params))
+                        // dispatch(deleteAllCommentAsync(params))
+                        navigate("/")
+                    }}
+                    >삭제하기</button>
+                    <button className="button"
+                    onClick={() => {
+                        navigate("EditBoard")
+                    }}>
+                    수정하기</button>
+                </StButtons>
+                <CommentContainer>
+                    <Comment id={params}></Comment>
+                    <CommentInput value = {comment} type= "text" onChange={commentHandle}/>
+                    <CommentBtn onClick={addComment} type="submit">댓글 추가</CommentBtn>
+                </CommentContainer>
+            </div>
+        </div>
     </>
   )
 }
 
 export default Pages
-
 
 const ContentBox = styled.div`
     width: 850px;
@@ -100,9 +92,7 @@ const ContentBox = styled.div`
     justify-content: space-evenly;
     align-items: center;
     border-radius: 8px
-    /* background-color: white; */
-    
-    
+    /* background-color: white; */ 
 `
 
 const CommentContainer = styled.form`
@@ -155,33 +145,6 @@ const StTitleText = styled.div`
 const StBodyText = styled.div`
     font-size: 20px;
 `
-
-// const StButton = styled.button`
-//   width: 140px;
-//   height: 45px;
-//   font-family: 'Roboto', sans-serif;
-//   font-size: 11px;
-//   text-transform: uppercase;
-//   letter-spacing: 2.5px;
-//   font-weight: 500;
-//   color: #000;
-//   background-color: #fff;
-//   border: none;
-//   border-radius: 45px;
-//   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-//   transition: all 0.3s ease 0s;
-//   cursor: pointer;
-//   outline: none;
-        
-// `
-
-// const BigMainPages = styled.div`
-//     width: 100%;
-//     height: 100%;
-
-
-// `
-
 
 
 

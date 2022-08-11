@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./MainPage.css";
 import styled from "styled-components";
 import Header from "../Header/Header";
@@ -9,11 +9,11 @@ import { getBoardsAsync } from "../../redux/modules/notice";
 const MainPage = ()=>{
   const dispatch = useDispatch();
   const boardGet = useSelector((state)=>state.notice)
-
-  
+  const [check,setCheck] = useState(false)
+  console.log(boardGet)
   useEffect(()=>{
     dispatch(getBoardsAsync());
-  },[])
+  },[check])
   return (
     <div className="MainPage">
       <Header/>
@@ -21,13 +21,10 @@ const MainPage = ()=>{
         <StNoticeBoard>
         {boardGet.map((boards,index)=>{
           return(
-          
-            <Link to={`/Pages/${boards.id}`} key={index}><div className="boards">{boards.title}</div></Link>
+            <Link to={`/Pages/${boards.id}`} key={index} onClick={()=>{setCheck(!check)}}><div className="boards">{boards.title}</div></Link>
           )
         })}
         </StNoticeBoard>
-
-        
         <Link to={"/BoardWrite"}>
           <StButton>게시글 작성</StButton>
         </Link>
@@ -41,7 +38,6 @@ const StNoticeBoard = styled.div`
   background-color: white;
   max-width: 1200px;
   width:1000px;
-  height : 750px;
   border-radius: 8px;
   display:flex;
   flex-direction: column;

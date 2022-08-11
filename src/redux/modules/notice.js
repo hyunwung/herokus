@@ -3,17 +3,23 @@ import axios from 'axios';
 
 let url1 = "http://localhost:5000/boards"
 
-export const getBoardsAsync = createAsyncThunk( // 게시판 조회 , 찾기
-    "board/getTodosAsync",
+export const getBoardsAsync = createAsyncThunk( // 게시판 전체 조회
+    "boards/getTodosAsync",
     async ()=>{
         const response = await axios.get(url1)
         return response.data
 })
-export const __postboards = createAsyncThunk(
+
+// export const getBoardAsync = createAsyncThunk( // 원하는 게시판 클릭
+//     "board/getTodosAsync",
+//     async (id)=>{
+//         const response = await axios.get(url1+`/${id}`)
+//         return response.data
+// })
+export const __postboards = createAsyncThunk( // 게시글 추가 
   "boards/postboards",
   async (args, thunkAPI) => {
     try {
-      // const {title, content} = {...args};
       const response = await axios.post("http://localhost:5000/boards", {
         title:args.title,
         content:args.content,
@@ -82,7 +88,6 @@ export const noticeSlice = createSlice({
       [EditBoardsAsync.fulfilled] : (state,{payload}) => {
         console.log(payload)
       },
-
       // [getCommentAsync.fulfilled]:(state,{payload}) => {
       //   console.log("fetching data !")
       //   return [...payload]

@@ -7,6 +7,7 @@ const Comment = ({id}) => {
     const [state,setState] = useState(false)
     const [inputCm,setInputCm] = useState("")
     const [idCheck, setIdCheck] = useState(-1)
+    
     const onChange = (e) =>{
         setInputCm(e.target.value)
     }
@@ -34,13 +35,13 @@ const Comment = ({id}) => {
     }
     const dispatch = useDispatch();
     const comment = useSelector((state)=>state.comment)
-    console.log("보여봐라!",comment)
+    
     useEffect(()=>{
         dispatch(getCommentIdAsync(id));   
         // return () => {
         //     dispatch(getCommentIdAsync(id.id));
         // }
-    },[state])
+    },[])
     return (
     <div className='comment'>   
         {comment.map((comments,index)=>{
