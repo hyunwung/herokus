@@ -26,6 +26,8 @@ const MainPage = ()=>{
           )
         })}
         </StNoticeBoard>
+
+        
         <Link to={"/BoardWrite"}>
           <StButton>게시글 작성</StButton>
         </Link>

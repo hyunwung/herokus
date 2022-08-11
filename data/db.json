@@ -1,55 +1,41 @@
 {
   "boards": [
     {
-      "title": "ㅇㅇㅇ",
-      "content": "ㅇㅇㅇㅇ",
+      "title": "여기다 수정하고 싶은 내용을 쓰자",
+      "content": "진짜로 써라",
       "id": 1
     },
     {
-      "title": "ㅇㅇ",
-      "content": "ㅇㅇㅇㅇ",
+      "title": "123312321",
+      "content": "31232312123",
       "id": 2
     },
     {
-      "title": "ㅁㄴㅇㅁ",
-      "content": "ㅇㅁㅇㅁㅁㄴ",
+      "title": "t수정되나",
+      "content": "수정되나",
       "id": 3
     },
     {
-      "title": "ㅇㅁㄴㅇ",
-      "content": "ㅇㅁㄴㅇㅁㅁㅇㅁㅇ",
+      "title": "title",
+      "content": "text",
       "id": 4
     },
     {
-      "title": "ㅇㄴㅁㅇㅁㄴㅇㅁ",
-      "content": "ㅇㅁㄴㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ",
+      "title": "1번 게시물 입니다.",
+      "content": "1번 내용이지요",
       "id": 5
-    },
-    {
-      "title": "ㅇㅁㄴㅇㅁㄴㅇ",
-      "content": "ㅁㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㅇ",
-      "id": 6
-    },
-    {
-      "title": "가나",
-      "content": "다라",
-      "id": 7
-    },
-    {
-      "title": "나라",
-      "content": "맛슬",
-      "id": 8
-    },
-    {
-      "title": "도로",
-      "content": "ㅁ엄어",
-      "id": 9
-    },
-    {
-      "title": "처리",
-      "content": "완",
-      "id": 10
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "boardsId": 2,
+      "comment": "1232123",
+      "id": 2
+    },
+    {
+      "boardsId": 2,
+      "comment": "12312321231232",
+      "id": 3
+    }
+  ]
 }

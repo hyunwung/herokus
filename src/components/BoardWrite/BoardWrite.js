@@ -77,6 +77,7 @@ const BorderTitle = styled.input`
     width: 800px;
     height: 30px;
     margin: 40px auto;
+    flex-direction: column;
     display: flex;
     border: 1px solid black;
 `

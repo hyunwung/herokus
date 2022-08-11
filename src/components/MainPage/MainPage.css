@@ -4,6 +4,8 @@
     left: 50%;
     top:50%;
     transform: translate(-50%,-50%);
+    
+    
 }
 a{
     text-decoration: none
@@ -11,10 +13,19 @@ a{
 .boards{
     padding: 1px 6px;
     width: 980px;
-    height: 25px;
-    
+    height: 60px;
+    vertical-align: middle;
+    text-align: center;
     border-bottom: 0.5px solid gray;
-    font-weight: bold;
-    font-size: 16px;
-    color :rgb(72, 52, 212);
+    /* font-weight: bold; */
+    font-size: 50px;
+    color :rgb(92, 201, 177);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1.5px 5px;
+    
 }
+
+.boards:hover {
+    background-color: rgb(232, 250, 246);
+}
+
+
