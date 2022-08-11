@@ -12,6 +12,8 @@ const Comment = ({id}) => {
         setInputCm(e.target.value)
     }
     const updateComment = (id) => {
+        console.log(id)
+        alert(id,typeof(id))
         if (inputCm===""){
             alert("수정해주세요.")    
             return

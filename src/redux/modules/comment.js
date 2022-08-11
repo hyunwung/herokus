@@ -2,7 +2,7 @@
 import { createSlice , createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-let url2 = "http://localhost:5000/comments"
+const url2 = process.env.REACT_APP_BASE_URI2
 
 export const getCommentIdAsync = createAsyncThunk( // 댓글 조회 , 찾기
     "comment/getTodosAsync",
@@ -13,7 +13,6 @@ export const getCommentIdAsync = createAsyncThunk( // 댓글 조회 , 찾기
 export const postCommentIdAsync = createAsyncThunk( // 댓글 달기
     "comment/postTodosAsync",
     async (payload) => {
-      parseInt(payload.boardsId)
         const response = await axios.post(url2,{
           boardsId:payload.boardsId,
           comment: payload.comment,
@@ -23,7 +22,7 @@ export const postCommentIdAsync = createAsyncThunk( // 댓글 달기
 export const updateCommentIdAsync = createAsyncThunk( // 댓글 수정
     "comment/postTodosAsync",
     async (payload) => {
-        const response = await axios.patch(url2+`/${payload.id}`,{
+        const response = await axios.patch(url2+`/${payload}`,{
           // boardsid:payload.boardsid,
           comment: payload.comment,
         })
@@ -34,7 +33,9 @@ export const updateCommentIdAsync = createAsyncThunk( // 댓글 수정
 export const deleteCommentIdAsync = createAsyncThunk( // 댓글 삭제
     "comment/deleteTodosAsync",
     async (payload) => {
+        console.log(payload)
         const response = await axios.delete(url2+`/${payload}`)
+        console.log(response.data)
         return response,payload
 })
 

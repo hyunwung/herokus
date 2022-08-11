@@ -1,13 +1,12 @@
 import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
-let url1 = "http://localhost:5000/boards"
+let url1 = process.env.REACT_APP_BASE_URI1
 
 export const getBoardAsync = createAsyncThunk( // 원하는 게시판 클릭
     "board/getTodosAsync",
     async (id)=>{
         const response = await axios.get(url1+`/${id}`)
-        console.log("검사",response)
         return response.data
 })
 const initialState = [{
@@ -32,14 +31,12 @@ export const noticeSlice = createSlice({
       
     },
     extraReducers:{
-      
       [getBoardAsync.fulfilled]:(state,{payload}) => {
         console.log("이 게시글 조회 !")
         return payload
       },
       [getBoardAsync.rejected]:(state,{payload}) => {
         console.log("fail !")
-        
       }
       // [getCommentAsync.fulfilled]:(state,{payload}) => {
       //   console.log("fetching data !")

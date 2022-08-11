@@ -1,7 +1,7 @@
 import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
-let url1 = "http://localhost:5000/boards"
+let url1 = process.env.REACT_APP_BASE_URI1
 
 export const getBoardsAsync = createAsyncThunk( // 게시판 전체 조회
     "boards/getTodosAsync",
@@ -20,7 +20,7 @@ export const __postboards = createAsyncThunk( // 게시글 추가
   "boards/postboards",
   async (args, thunkAPI) => {
     try {
-      const response = await axios.post("http://localhost:5000/boards", {
+      const response = await axios.post(url1, {
         title:args.title,
         content:args.content,
       }) 
@@ -34,7 +34,7 @@ export const __postboards = createAsyncThunk( // 게시글 추가
 export const deleteBoardsAsync = createAsyncThunk( // 게시판 삭제
   "board/deleteBoardsAsync",
   async (id,thunkAPI) => {
-    const response = await axios.delete(`http://localhost:5000/boards/${id}`)
+    const response = await axios.delete(url1+`/${id}`)
     console.log("complete")
     return response.data
   }
@@ -43,7 +43,7 @@ export const deleteBoardsAsync = createAsyncThunk( // 게시판 삭제
 export const EditBoardsAsync = createAsyncThunk(// 게시판 수정
 "board/EditBoardsAsync",
 async (payload, thunkAPI) => {
-  const data = await axios.patch(`http://localhost:5000/boards/${payload.id}`, {
+  const data = await axios.patch(url1+`/${payload.id}`, {
     title : payload.title,
     content : payload.content
   })
