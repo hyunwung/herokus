@@ -1,12 +1,14 @@
 import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
-let url1 = process.env.REACT_APP_BASE_URI1
+// let url1 = process.env.REACT_APP_BASE_URI1
+let url1 = `http://localhost:5000/boards`
 
 export const getBoardsAsync = createAsyncThunk( // 게시판 전체 조회
     "boards/getTodosAsync",
     async ()=>{
-        const response = await axios.get(url1)
+        const response = await axios.get(url1+`/boards`
+        )
         return response.data
 })
 
@@ -20,7 +22,7 @@ export const __postboards = createAsyncThunk( // 게시글 추가
   "boards/postboards",
   async (args, thunkAPI) => {
     try {
-      const response = await axios.post(url1, {
+      const response = await axios.post(url1+`/boards`, {
         title:args.title,
         content:args.content,
       }) 

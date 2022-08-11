@@ -28,10 +28,12 @@ const Comment = ({id}) => {
         e.preventDefault()
         setIdCheck(-1)
     }
-    const updateId = (ids) =>{        
+    const updateId = (ids,e) =>{
+        e.preventDefault();
         setIdCheck(ids)
     }
-    const deleteComment = (commentid) => {
+    const deleteComment = (commentid,e) => {
+        e.preventDefault();
         dispatch(deleteCommentIdAsync(commentid))
         setState(!state)
     }
@@ -43,7 +45,7 @@ const Comment = ({id}) => {
         // return () => {
         //     dispatch(getCommentIdAsync(id.id));
         // }
-    },[])
+    },[state])
     return (
     <div className='comment'>   
         {comment.map((comments,index)=>{
@@ -52,11 +54,11 @@ const Comment = ({id}) => {
                 {idCheck === comments.id ?
                     <div>
                         <input value ={inputCm} onChange={onChange}></input>
-                        <button onClick={()=>updateComment(comments.id)}>수정하기</button>
+                        <button onClick={(e)=>updateComment(comments.id,e)}>수정하기</button>
                         <button onClick={()=>updateBtn}>수정</button>
                     </div>   
                     :   <div key={index} className="comment-item">{comments.comment}
-                            <button onClick={()=>deleteComment(comments.id)}>삭제</button>
+                            <div onClick={(e)=>deleteComment(comments.id,e)}>삭제</div>
                             <button onClick={()=>updateId(comments.id)}>수정</button>    
                         </div>
                 }

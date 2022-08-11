@@ -1,7 +1,8 @@
 import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
-let url1 = process.env.REACT_APP_BASE_URI1
+// let url1 = process.env.REACT_APP_BASE_URI1
+let url1 = `http://localhost:5000/boards`
 
 export const getBoardAsync = createAsyncThunk( // 원하는 게시판 클릭
     "board/getTodosAsync",
